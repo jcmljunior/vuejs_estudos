@@ -7,6 +7,10 @@ const minutes = computed(() => String(Math.floor(pomodoroStore.time / 60)).padSt
 const seconds = computed(() => String(pomodoroStore.time % 60).padStart(2, "0"));
 
 pomodoroStore.init();
+
+if (!pomodoroStore.pomodoro && !pomodoroStore.longBreak && !pomodoroStore.shortBreak) {
+  pomodoroStore.setMode("pomodoro");
+}
 </script>
 
 <template>
