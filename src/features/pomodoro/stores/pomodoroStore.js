@@ -4,8 +4,8 @@ const POMODORO_KEY = "user-pomodoro"
 const usePomodoroStore = () =>
   reactive({
     isRunning: false,
-    isPaused: false,
-    pomodoro: false,
+    isPaused: true,
+    pomodoro: true,
     shortBreak: false,
     longBreak: false,
     time: 0,
@@ -14,8 +14,10 @@ const usePomodoroStore = () =>
     init() {
       const pomodoro = JSON.parse(localStorage.getItem(POMODORO_KEY))
       if (pomodoro) {
-        this.isRunning = pomodoro.isRunning
-        this.isPaused = pomodoro.isPaused
+        // Não salva o estado de execução do temporizador.
+        // Sempre que a página for recarregada, o temporizador será inicializado no estado de pausa.
+        // this.isRunning = pomodoro.isRunning
+        // this.isPaused = pomodoro.isPaused
         this.pomodoro = pomodoro.pomodoro
         this.shortBreak = pomodoro.shortBreak
         this.longBreak = pomodoro.longBreak
@@ -27,16 +29,8 @@ const usePomodoroStore = () =>
     },
 
     reset() {
-      this.isRunning = false
-      this.isPaused = false
-      this.pomodoro = false
-      this.shortBreak = false
-      this.longBreak = false
-      this.time = 0
-      this.timer = 0
-
       localStorage.removeItem(POMODORO_KEY)
-
+      this.setMode('pauseTimer')
       this.setMode('pomodoro')
     },
 
@@ -56,6 +50,7 @@ const usePomodoroStore = () =>
       this.timer = setInterval(() => {
         if (this.time > 0) {
           this.time--
+          localStorage.setItem(POMODORO_KEY, JSON.stringify(this))
         } else {
           this.setMode('resetTimer')
 
