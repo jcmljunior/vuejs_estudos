@@ -10,7 +10,11 @@ const localeStore = inject("useLocaleStore");
     <h3>{{ localeStore.translate("header.title") }}</h3>
     <ul>
       <li v-for="(route, index) in routes" :key="index">
-        <RouterLink :to="route.path">{{ route.name }}</RouterLink>
+        <RouterLink
+          :to="route.path"
+          :aria-label="localeStore.translate('header.link', route.name)"
+          >{{ route.name }}</RouterLink
+        >
       </li>
     </ul>
   </header>

@@ -1,5 +1,6 @@
 {
     "header.title": "Projetos",
+    "header.link": "Ir para %s",
     "pomodoro.title": "Pomodoro Timer",
     "pomodoro.modes.pomodoro": "Pomodoro",
     "pomodoro.modes.longBreak": "Longa pausa",
@@ -22,5 +23,6 @@
     "footer.locale.pt_BR": "Português",
     "footer.locale.en_US": "Inglês",
     "footer.copyright": "© 2025, jcmljunior todos os direitos reservados.",
-    "footer.developer": "Desenvolvido por "
+    "footer.developer": "Desenvolvido por ",
+    "footer.developer.ariaLabel": "Acessar o perfil do desenvolvedor Julio Cesar no GitHub"
 }

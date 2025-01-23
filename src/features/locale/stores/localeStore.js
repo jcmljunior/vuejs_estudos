@@ -53,7 +53,7 @@ const useLocaleStore = () =>
 
       if(args.length && message.includes('%s')) {
         for (let i = 0; i < args.length; i++) {
-          message = message.replaceFirst(`%s`, args[i])
+          message = message.replace(`%s`, args[i])
         }
       }
 
