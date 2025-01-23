@@ -24,6 +24,7 @@ const usePomodoroStore = () =>
         this.time = pomodoro.time
         this.timer = pomodoro.timer
       } else {
+        this.setMode('pauseTimer')
         this.setMode('pomodoro')
       }
     },

@@ -1,14 +1,18 @@
 <script setup>
-import { inject, computed } from "vue";
+import { inject, computed, onBeforeUnmount, onMounted } from "vue";
 
 const pomodoroStore = inject("usePomodoroStore");
 const localeStore = inject("useLocaleStore");
 const minutes = computed(() => String(Math.floor(pomodoroStore.time / 60)).padStart(2, "0"));
 const seconds = computed(() => String(pomodoroStore.time % 60).padStart(2, "0"));
 
-pomodoroStore.init();
+onMounted(() => {
+  pomodoroStore.init();
+});
 
-console.log(localeStore.locale);
+onBeforeUnmount(() => {
+  pomodoroStore.pauseTimer();
+});
 </script>
 
 <template>
