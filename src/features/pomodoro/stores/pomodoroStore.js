@@ -14,10 +14,15 @@ const usePomodoroStore = () =>
     init() {
       const pomodoro = JSON.parse(localStorage.getItem(POMODORO_KEY))
       if (pomodoro) {
+        this.isRunning = pomodoro.isRunning
+        this.isPaused = pomodoro.isPaused
         this.pomodoro = pomodoro.pomodoro
         this.shortBreak = pomodoro.shortBreak
         this.longBreak = pomodoro.longBreak
         this.time = pomodoro.time
+        this.timer = pomodoro.timer
+      } else {
+        this.setMode('pomodoro')
       }
     },
 

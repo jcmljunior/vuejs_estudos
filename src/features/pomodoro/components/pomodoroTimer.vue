@@ -8,9 +8,7 @@ const seconds = computed(() => String(pomodoroStore.time % 60).padStart(2, "0"))
 
 pomodoroStore.init();
 
-if (!pomodoroStore.pomodoro && !pomodoroStore.longBreak && !pomodoroStore.shortBreak) {
-  pomodoroStore.setMode("pomodoro");
-}
+console.log(localeStore.locale);
 </script>
 
 <template>
