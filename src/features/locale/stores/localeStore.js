@@ -10,7 +10,18 @@ const LOCALE_KEY = 'user-locale'
 
 const useLocaleStore = () =>
   reactive({
-    locale: localStorage.getItem(LOCALE_KEY) || 'pt_BR',
+    locale: 'pt_BR',
+
+    init() {
+      const locale = localStorage.getItem(LOCALE_KEY) || navigator.language.replace('-', '_')
+
+      if (Object.keys(LOCALES).includes(locale)) {
+        this.locale = locale
+      }
+
+      localStorage.setItem(LOCALE_KEY, this.locale)
+    },
+
     setLocale(locale) {
 
       if (!Object.keys(LOCALES).includes(locale)) {

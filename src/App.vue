@@ -2,7 +2,10 @@
 import { provide } from "vue";
 import useLocaleStore from "@/features/locale/stores/localeStore";
 
-provide("useLocaleStore", useLocaleStore());
+const localeStore = useLocaleStore();
+localeStore.init();
+
+provide("useLocaleStore", localeStore);
 </script>
 
 <template>
